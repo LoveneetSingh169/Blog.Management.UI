@@ -1,0 +1,22 @@
+<h1>Blog Management</h1><br/>
+<a class="btn btn-sm btn-success mb-2" routerLink="/blog/blog-add">Add New Post</a>
+<table class="table table-striped">
+    <tbody>
+        <tr class="border d-grid gap-3" *ngFor="let post of blogPosts">  
+            <td style="width:100%;">
+                <div class="row w-100 p-4 border">
+                   <div class="col mb-10"> {{post.text}} </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">Created By : {{post.userName}}</div>
+                    <div class="col mb-4">Created Date : {{post.dateCreated | date}}</div>
+                    <div class="col mb-4" style="white-space: nowrap">
+                        <a [routerLink]="['/blog/blog-edit', post.id]" class="btn btn-sm btn-primary me-1">Edit</a>
+                        <button (click)="deleteBlogPost(post.id)" class="btn btn-sm btn-danger btn-delete-post">Delete
+                        </button>
+                    </div>
+                </div>
+            </td>   
+        </tr>        
+    </tbody>
+</table>

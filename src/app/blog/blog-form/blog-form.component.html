@@ -1,0 +1,31 @@
+<form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col mb-10">
+      <label class="form-label">Username:</label>
+      <input class="form-control" formControlName="userName" type="text" />
+      <div *ngIf="blogForm.controls['userName'].invalid && blogForm.controls['userName'].touched ">
+        <p class="error-message" *ngIf="blogForm.controls['userName'].errors?.['required']">
+          User Name is required!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mb-10">
+      <label class="form-label">Text:</label>
+      <textarea class="form-control" formControlName="text"></textarea>
+      <div *ngIf="blogForm.controls['text'].invalid && blogForm.controls['text'].touched ">
+        <p class="error-message" *ngIf="blogForm.controls['text'].errors?.['required']">
+          Text is required!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div cla="row">
+    <div class="form-group">
+      <button type="submit" class="btn btn-sm btn-success mb-2" [disabled]="!blogForm.valid"> {{ blogPost ? 'Update' : 'Add' }}
+        Post</button>
+    </div>
+  </div>
+</form>

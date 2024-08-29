@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlogPostService } from '../../services/blog-post.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as toastr from 'toastr';
 
 @Component({
   selector: 'app-blog-add',
@@ -20,6 +21,7 @@ export class BlogAddComponent {
   addBlogPost(): void {
     this.blogPostService.addBlogPost(this.ngForm.value).subscribe(() => {
       this.router.navigate(['/']);
+      toastr.success("post added successfully.");
     });
   }
 }

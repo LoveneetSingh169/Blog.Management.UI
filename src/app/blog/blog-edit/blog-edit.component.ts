@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlogPostService } from '../../services/blog-post.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as toastr from 'toastr';
 
 @Component({
   selector: 'app-blog-edit',
@@ -43,6 +44,7 @@ export class BlogEditComponent implements OnInit {
     if (this.ngForm.value) {
       this.blogPostService.updateBlogPost(this.ngForm.controls['id'].value, this.ngForm.value).subscribe(() => {
         this.router.navigate(['/']);
+        toastr.success("post updated successfully.");
       }, (err: HttpErrorResponse) => {
         toastr.error(err.message);
       });

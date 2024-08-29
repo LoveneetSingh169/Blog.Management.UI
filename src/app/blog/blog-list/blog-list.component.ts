@@ -10,10 +10,10 @@ import * as toastr from 'toastr';
 })
 export class BlogListComponent implements OnInit {
   blogPosts: BlogPost[] = [];
-  constructor(private blogPostService: BlogPostService) {}
+  constructor(private blogPostService: BlogPostService) { }
 
   ngOnInit(): void {
-   
+
     this.blogPostService.getBlogPosts().subscribe(data => {
       this.blogPosts = data;
     }, (err: HttpErrorResponse) => {
@@ -22,10 +22,13 @@ export class BlogListComponent implements OnInit {
   }
 
   deleteBlogPost(id: number): void {
-    this.blogPostService.deleteBlogPost(id).subscribe(() => {
-      this.blogPosts = this.blogPosts.filter(post => post.id !== id);
-    }, (err: HttpErrorResponse) => {
-      toastr.error(err.message);
-    });
+    if (window.confirm('Are sure you want to delete this item ?')) {
+      this.blogPostService.deleteBlogPost(id).subscribe(() => {
+        this.blogPosts = this.blogPosts.filter(post => post.id !== id);
+        toastr.success("post deleted successfully.");
+      }, (err: HttpErrorResponse) => {
+        toastr.error(err.message);
+      });
+    }
   }
 }

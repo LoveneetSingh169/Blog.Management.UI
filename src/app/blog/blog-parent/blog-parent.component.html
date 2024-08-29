@@ -1,0 +1,25 @@
+<h1>Blog Management</h1><br />
+<div>
+  <app-blog-form [blogPost]="selectedBlogPost" (save)="onSave($event)"></app-blog-form>
+</div>
+<br />
+<table class="table table-striped">
+  <tbody>
+    <tr class="border d-grid gap-3" *ngFor="let post of blogPosts">
+      <td>
+        <div class="row w-100 p-4 ">
+          <div class="col mb-10 border"> {{post.text}} </div>
+        </div>
+        <div class="row">
+          <div class="col mb-4">Created By : {{post.userName}}</div>
+          <div class="col mb-4">Created Date : {{post.dateCreated | date}}</div>
+          <div class="col mb-4" style="white-space: nowrap">
+            <a (click)="onEdit(post)" class="btn btn-sm btn-primary me-1">Edit</a>
+            <button (click)="deleteBlogPost(post.id)" class="btn btn-sm btn-danger btn-delete-post">Delete
+                        </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

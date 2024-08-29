@@ -4,16 +4,19 @@ import { BlogComponent } from './blog.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogAddComponent } from './blog-add/blog-add.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import { BlogFormComponent } from './blog-form/blog-from.component';
+import { BlogParentComponent } from './blog-parent/blog-parent.component';
 
 
 const routes: Routes = [{
   path: '',
   component: BlogComponent,
   children: [
-  //  { path: '', redirectTo: 'blog-list', pathMatch: 'full' }, // Redirect to BlogListComponent
     { path: 'blog-list', component: BlogListComponent },
     { path: 'blog-add', component: BlogAddComponent },
     { path: 'blog-edit/:id', component: BlogEditComponent },
+    { path: 'blog-form', component: BlogFormComponent },
+    { path: 'blog-parent', component: BlogParentComponent },
   ],
 }];
 

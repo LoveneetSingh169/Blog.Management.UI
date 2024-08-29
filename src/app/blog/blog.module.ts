@@ -6,6 +6,8 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogAddComponent } from './blog-add/blog-add.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogFormComponent } from './blog-form/blog-from.component';
+import { BlogParentComponent } from './blog-parent/blog-parent.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     BlogComponent,
     BlogAddComponent,
     BlogEditComponent,
-    BlogListComponent
+    BlogListComponent,
+    BlogFormComponent,
+    BlogParentComponent
   ],
 })
 export class BlogModule { }
